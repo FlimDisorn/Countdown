@@ -1,0 +1,177 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #e3f2fd, #f9f9f9);
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeInUp 1.5s forwards;
+}
+#image1, #image2, #image3, #image4, #image5, #image6, #image7, #image8, #image9, #image10 {
+    position: absolute;
+    transition: transform 0.3s ease;
+}
+
+#image1 { top: -40%; left: 260%; }
+#image2 { top: 30%; left: 150%; }
+#image3 { top: 40%; left: -200%; }
+#image4 { top: 60%; left: -350%; }
+#image5 { top: 60%; left: 400%; }
+#image6 { top: -35%; left: 430%; }
+#image7 { top: -30%; left: -330%; }
+#image8 { top: 70%; left: 240%; }
+#image9 { top: 80%; left: -120%; }
+#image10 { top: -10%; left: -150%; }
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+h1 {
+    font-size: 40px;
+    color: #e262ad;
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+
+.audio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 280px;
+    text-align: center;
+    z-index: 2;
+}
+
+.audio-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 20%;
+    max-width: 200px;
+    position: relative; /* ทำให้สามารถควบคุมเลเยอร์ได้ */    
+}
+
+.audio-container img {
+    width: 80%; /* ปรับขนาดรูปภาพ */
+    max-width: 150px;
+    border-radius: 15px;
+    position: relative; /* เพิ่ม position เพื่อให้สามารถจัดการ z-index ได้ */
+    z-index: 2; /* รูปภาพจะอยู่ด้านหน้า */
+}
+
+.cd {
+    width: 120px;  /* ขนาดแผ่น CD */
+    height: 120px; /* ขนาดแผ่น CD */
+    border-radius: 50%; /* ทำให้เป็นวงกลม */
+    background-color: #fff; /* พื้นหลังเป็นสีขาว */
+    border: 6px solid #e6e6e6; /* ขอบของแผ่น CD */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาแบบเบาๆ ให้ดูมีมิติ */
+    position: absolute; /* ใช้ absolute เพื่อจัดตำแหน่งได้ง่าย */
+    top: 0; /* ระยะห่างจากด้านบน */
+    transform: translateY(-50%); /* ขยับขึ้น 30% จากตำแหน่งเดิม */
+    z-index: 1; /* ทำให้แผ่น CD อยู่ด้านหลัง */
+}
+
+.cd:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 96px;
+    height: 96px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.cd img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.cd:hover img {
+    transform: scale(1.05);
+}
+
+@keyframes rotateCd {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.audio-container p {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+    font-weight: 600;
+}
+
+audio {
+    width: 100%;
+    max-width: 300px; /* ขนาดสูงสุด */
+    outline: none;
+    border-radius: 8px; /* มุมมน */
+    background-color: transparent; /* พื้นหลังโปร่งใส */
+    border: 2px solid #ddd; /* ขอบบาง ๆ สีเทา */
+    box-shadow: none; /* ไม่ใช้เงา */
+    padding: 5px;
+    margin-top: 20px;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: transparent; /* พื้นหลังโปร่งใส */
+    border-radius: 8px; /* มุมมน */
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-volume-slider,
+audio::-webkit-media-controls-mute-button {
+    background-color: transparent; /* ปรับปุ่มทั้งหมดให้โปร่งใส */
+    border: none; /* ไม่ให้มีขอบ */
+}
+
+audio::-webkit-media-controls-play-button {
+    color: #333; /* เปลี่ยนสีปุ่มเล่นให้เข้ม */
+}
+
+audio::-webkit-media-controls-volume-slider {
+    background-color: #f0f0f0; /* ปรับสีของแถบระดับเสียง */
+    border-radius: 5px;
+}
+
+audio::-webkit-media-controls-volume-slider:disabled {
+    background-color: #ddd; /* สีอ่อนเมื่อปิดเสียง */
+}
+
+audio::-webkit-media-controls-mute-button {
+    color: #333; /* ปรับสีปุ่มเสียงปิด */
+}

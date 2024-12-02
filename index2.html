@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you Love Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 36px;
+            color: #ff66b2;
+            font-family: 'Pacifico', cursive;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .image-container img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 200px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            position: absolute;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+
+        #love-btn {
+            background-color: #ff66b2;
+            color: white;
+            left: 45.5%;
+            top: 61%;
+        }
+
+        #not-love-btn {
+            background-color: #6666ff;
+            color: white;
+            left: 50.5%;
+            top: 61%;
+        }
+    </style>
+</head>
+<body>
+    <h1>เธอรักเค้าไหม?</h1>
+    <div class="image-container">
+        <img id="main-image" src="img/cat_love.jpg" alt="รูปภาพเริ่มต้น">
+    </div>
+    <div class="button-container">
+        <a href="index3.html">
+            <button id="love-btn"  class="button">รักสิ</button>
+        </a>
+        <button id="not-love-btn" class="button">ไม่รัก</button>
+    </div>
+
+    <script>
+        const notLoveBtn = document.getElementById('not-love-btn');
+        const mainImage = document.getElementById('main-image');
+
+        // เปลี่ยนตำแหน่งปุ่ม "ไม่รัก" แบบสุ่มเมื่อกด
+        notLoveBtn.addEventListener('click', () => {
+            const bodyWidth = window.innerWidth;
+            const bodyHeight = window.innerHeight;
+
+            const randomX = Math.random() * (bodyWidth - notLoveBtn.offsetWidth);
+            const randomY = Math.random() * (bodyHeight - notLoveBtn.offsetHeight);
+
+            notLoveBtn.style.left = `${randomX}px`;
+            notLoveBtn.style.top = `${randomY}px`;
+        });
+
+        // เปลี่ยนรูปเมื่อเมาส์ชี้ปุ่ม "รัก"
+        document.getElementById('love-btn').addEventListener('mouseover', () => {
+            mainImage.src = 'img/cat_love.jpg';
+        });
+
+        notLoveBtn.addEventListener('mouseover', () => {
+            mainImage.src = 'img/cat_angry.jpg';
+        });
+
+        document.getElementById('love-btn').addEventListener('mouseout', () => {
+            mainImage.src = 'img/cat_love.jpg';
+        });
+    </script>
+</body>
+</html>
